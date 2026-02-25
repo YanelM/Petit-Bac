@@ -3,49 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petit Bac Ultimate</title>
+        <title>Petit Bac</title>
         <link rel="stylesheet" href="vue/css/style.css">
     </head>
 
     <body>
-        <h1>🎮 Petit Bac Ultimate</h1>
+        <h1>🎮 Petit Bac</h1>
 
         <div class="container">
+            <div class="config-container">
+                <label>Nombre de catégories (4-10):<input type="number" id="numCategories" min="4" max="10" value="5"></label>
+                <label>Temps (30-120 sec):<input type="number" id="gameTime" min="30" max="120" value="60"></label>
+                <div id="categorySelection"></div>
+                <h2 id="totalScore">Score total : 0</h2>
+                <div id="usedLettersDisplay"></div>
+            </div>
 
-        <h3>Configuration</h3>
-
-        <label>Nombre de catégories (4-10) :
-        <input type="number" id="numCategories" min="4" max="10" value="5">
-        </label>
-
-        <br><br>
-
-        <label>Temps (30-120 sec) :
-        <input type="number" id="gameTime" min="30" max="120" value="60">
-        </label>
-
-        <br><br>
-
-        <div id="categorySelection"></div>
-
-        <h2 id="totalScore">Score total : 0</h2>
-        <div id="usedLettersDisplay"></div>
-
-        <div id="rounds"></div>
-
-        <div id="controls">
-            <button onclick="startRoundRandom()">Lettre aléatoire</button>
-
-            <select id="letterSelect"></select>
-            <button onclick="startRoundManual()">Choisir la lettre</button>
-
-            <button onclick="finishGame()">Finir la partie</button>
-        </div>
-
-        <div id="statistics"></div>
-
+            <div class="game-container">
+                <div id="rounds"></div>
+                <div id="controls">
+                    <button onclick="startRoundRandom()">Lettre aléatoire</button>
+                    <select id="letterSelect"></select>
+                    <button onclick="startRoundManual()">Choisir la lettre</button>
+                    <button onclick="finishGame()">Finir la partie</button>
+                    <button onclick="restartGame()">🔄 Recommencer la partie</button>
+                </div>
+                <div id="statistics"></div>
+            </div>
         </div>
 
         <script src="vue/js/script.js"></script>
     </body>
+
 </html>
