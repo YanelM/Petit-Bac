@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button, select {
+    padding: 8px 12px;
+    margin: 8px 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.round {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.round-header {
+    background: #4e73df;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.round-header::after {
+    content: "▼";
+    transition: transform 0.3s ease;
+}
+
+.round.open .round-header::after {
+    transform: rotate(180deg);
+}
+
+.round-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 15px;
+}
+
+.round.open .round-content {
+    max-height: 2000px;
+    padding: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.timer-container {
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #1cc88a, #4e73df);
+    transition: width 1s linear, background 0.3s ease;
+}
+
+.progress-fill.warning {
+    background: linear-gradient(90deg, #ff6b6b, #ff0000);
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.validated {
+    animation: celebration 0.6s ease;
+}
+
+@keyframes celebration {
+    0% { transform: scale(1); background: #fff; }
+    50% { transform: scale(1.02); background: #d4edda; }
+    100% { transform: scale(1); background: #fff; }
+}
+
+.stats {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
