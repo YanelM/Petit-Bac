@@ -30,6 +30,22 @@ h1 {
     background-color: rgb(70, 70, 173);
     color: white;
 }
+
+/* ============================= */
+/* TIMER FIXE AU SCROLL (mobile uniquement) */
+/* ============================= */
+
+.fixed-timer {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
 /* ============================= */
 /* CONTAINER */
 /* ============================= */
@@ -218,3 +234,4 @@ th, td {
         font-size: 1rem;
     }
 }
+
