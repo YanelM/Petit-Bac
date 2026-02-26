@@ -12,7 +12,6 @@
 <h1>Petit Bac</h1>
 
 <div class="container">
-
     <div class="config-container">
         <label>Nombre de catégories (4-10):
             <input type="number" id="numCategories" min="4" max="10" value="5">
@@ -29,7 +28,6 @@
     </div>
 
     <div class="game-container">
-
         <div id="rounds"></div>
 
         <div id="controls">
@@ -37,15 +35,13 @@
             <select id="letterSelect"></select>
             <button onclick="startRoundManual()">Choisir la lettre</button>
             <button onclick="finishGame()" class="bouton_finishGame">Finir la partie</button>
-            <button onclick="restartGame()" class="bouton_restartGame">Recommencer</button>
+            <button onclick="restartGame()" class="bouton_restartGame">Recommencer la partie</button>
         </div>
 
         <div id="statistics"></div>
-
     </div>
 </div>
 
 <script src="vue/js/script.js"></script>
 </body>
 </html>
-
