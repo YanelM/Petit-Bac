@@ -108,7 +108,7 @@ window.startRound = function(letter){
                     <tbody>
                         ${categories.map(cat=>`
                             <tr>
-                                <td data-label="Catégorie">${cat}</td>
+                                <td data-label="Catégorie" class="categorie_manche">${cat}</td>
                                 <td data-label="Réponse"><input type="text"></td>
                                 <td data-label="Points">
                                     <select disabled>
@@ -291,3 +291,4 @@ window.restartGame = function(){
 
 
 });
+
