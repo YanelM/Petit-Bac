@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petit Bac</title>
-        <link rel="stylesheet" href="vue/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Bac</title>
+    <link rel="stylesheet" href="vue/css/style.css">
     </head>
 
     <body>
-        <h1>🎮 Petit Bac</h1>
+
+        <h1>Petit Bac</h1>
 
         <div class="container">
             <div class="config-container">
@@ -25,14 +26,14 @@
                     <button onclick="startRoundRandom()">Lettre aléatoire</button>
                     <select id="letterSelect"></select>
                     <button onclick="startRoundManual()">Choisir la lettre</button>
-                    <button onclick="finishGame()">Finir la partie</button>
-                    <button onclick="restartGame()">🔄 Recommencer la partie</button>
+                    <button onclick="finishGame()" class="bouton_finishGame">Finir la partie</button>
+                    <button onclick="restartGame()" class="bouton_restartGame">Recommencer la partie</button>
                 </div>
                 <div id="statistics"></div>
             </div>
         </div>
 
         <script src="vue/js/script.js"></script>
-    </body>
 
+    </body>
 </html>
