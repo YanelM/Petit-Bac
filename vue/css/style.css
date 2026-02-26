@@ -250,16 +250,14 @@ th, td {
 /* MENU DÉROULANT MANCHES */
 /* ============================= */
 
-.round {
-    overflow: hidden;
-}
-
 .round-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    display: none;
 }
 
 .round.open .round-content {
-    max-height: 2000px; /* suffisamment grand */
+    display: block;
+}
+
+.round {
+    overflow: hidden;
 }
