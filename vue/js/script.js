@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-const allCategories = ["Prénom","Pays","Ville","Animal","Objet","Métier","Marque","Fruit","Légume","Sport",
-    "Couleur","Film","Chanteur","Instrument","Voiture","Capitale","Monument","Émission TV","Pays d'Europe","Pays d'Asie"];
+const allCategories = ["Prénom","Pays","Ville","Animal","Objet","Métier","Marque","Fruit / Légume","Sport",
+    "Couleur","Film / Série","Chanteur","Instrument","Voiture","Capitale","Monument","Émission TV","Végétale","Titre de chanson", "Partie du corps", "Vêtement", "Moyen de transport"
+    , "Boisson", "Plat", "Mot anglais", "Mot espagnol", "Sportif", "Chose qui se trouve dans un sac à main", "Chose qui sent mauvais"];
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 let totalScore = 0;
@@ -287,5 +288,6 @@ window.restartGame = function(){
     document.querySelectorAll(".timer-container")
         .forEach(t=>t.classList.remove("fixed-timer"));
 };
+
 
 });
