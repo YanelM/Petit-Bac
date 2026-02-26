@@ -44,7 +44,10 @@ function startRound(letter){
             <div class="progress-bar"><div class="progress-fill"></div></div></div>
             <div class="table-container">
                 <table><thead><tr><th>Catégorie</th><th>Réponse</th><th>Points</th></tr></thead>
-                <tbody>${categories.map(cat=>`<tr><td>${cat}</td><td><input type="text"></td><td><select disabled><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></td></tr>`).join("")}</tbody></table>
+                <tbody>${categories.map(cat=>`<tr><td data-label="Catégorie">${cat}</td>
+<td data-label="Réponse"><input type="text"></td>
+<td data-label="Points">
+<select disabled><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></td></tr>`).join("")}</tbody></table>
             </div>
             <button class="validateBtn" disabled>Valider la manche</button>
         </div>
@@ -79,7 +82,7 @@ function startRound(letter){
 
 function startRoundRandom(){ const remaining=alphabet.filter(l=>!usedLetters.includes(l)); if(remaining.length===0){ alert("Toutes les lettres ont été utilisées !"); finishGame(); return;} const randomLetter=remaining[Math.floor(Math.random()*remaining.length)]; startRound(randomLetter); }
 function startRoundManual(){ startRound(document.getElementById("letterSelect").value); }
-function finishGame(){ if(roundData.length===0)return; let avg=(totalScore/roundData.length).toFixed(2); let best=Math.max(...roundData.map(r=>r.score)); document.getElementById("statistics").innerHTML=`<div class="stats"><h3>📊 Statistiques</h3><p>Manches jouées : ${roundData.length}</p><p>Score total : ${totalScore}</p><p>Moyenne par manche : ${avg}</p><p>Meilleure manche : ${best}</p></div>`; }
+function finishGame(){ if(roundData.length===0)return; let avg=(totalScore/roundData.length).toFixed(2); let best=Math.max(...roundData.map(r=>r.score)); document.getElementById("statistics").innerHTML=`<div class="stats"><h3>Statistiques</h3><p>Manches jouées : ${roundData.length}</p><p>Score total : ${totalScore}</p><p>Moyenne par manche : ${avg}</p><p>Meilleure manche : ${best}</p></div>`; }
 function restartGame(){
     clearInterval(timerInterval);
     totalScore=0; usedLetters=[]; roundData=[];
