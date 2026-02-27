@@ -185,7 +185,7 @@ window.startRound = function(letter){
         progressFill.style.width = percent + "%";
 
         let hue = percent * 1.2;
-        progressFill.style.background = `hsl(${hue},85%,50%)`;
+        progressFill.style.background = "#1cc88a";
 
         if(currentTime <= 0){
             clearInterval(timerInterval);
@@ -291,4 +291,5 @@ window.restartGame = function(){
 
 
 });
+
 
