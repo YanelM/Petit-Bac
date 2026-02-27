@@ -214,12 +214,14 @@ th, td {
         background: #f9f9f9;
         border-radius: 10px;
         padding: 10px;
+        padding-left: 0;
     }
 
     td {
         border: none;
         text-align: left;
         padding: 5px 0;
+        margin: 0;
     }
 
     td::before {
@@ -286,6 +288,7 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
 
 
