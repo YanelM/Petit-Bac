@@ -94,6 +94,7 @@ h1 {
     font-weight: bold;
     padding: 4px;
     border-radius: 6px;
+    padding-left: 0 !important;
 }
 /* ============================= */
 /* GAME AREA */
@@ -291,6 +292,7 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
 
 
