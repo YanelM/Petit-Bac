@@ -152,7 +152,7 @@ button, select, input[type=number] {
 
 .progress-bar {
     height: 14px;
-    background: #1cc88a;
+    background: #ddd;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -286,6 +286,7 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
 
 
