@@ -25,8 +25,12 @@
                 <div id="rounds"></div>
                 <div id="controls">
                     <button onclick="startRoundRandom()">Lettre aléatoire</button>
-                    <select id="letterSelect"></select>
-                    <button onclick="startRoundManual()">Choisir la lettre</button>
+
+                    <div class="manual-letter-group">
+                        <select id="letterSelect"></select>
+                        <button onclick="startRoundManual()">Choisir la lettre</button>
+                    </div>
+
                     <button onclick="finishGame()" class="bouton_finishGame">Finir la partie</button>
                     <button onclick="restartGame()" class="bouton_restartGame">Recommencer la partie</button>
                 </div>
@@ -38,6 +42,7 @@
 
     </body>
 </html>
+
 
 
 
