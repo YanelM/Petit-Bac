@@ -227,6 +227,11 @@ th, td {
         font-weight: bold;
         display: block;
         margin-bottom: 3px;
+        padding-left: 0;
+    }
+    
+    td {
+        padding-left: 0;
     }
 
     input, select {
@@ -286,6 +291,7 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
 
 
