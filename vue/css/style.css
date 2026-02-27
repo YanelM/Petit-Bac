@@ -264,3 +264,20 @@ th, td {
     overflow: hidden;
 }
 
+/* ============================= */
+/* GROUPE CHOIX MANUEL LETTRE */
+/* ============================= */
+
+.manual-letter-group {
+    background-color: #c1c1c1;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    gap: 10px;
+    flex: 1 1 100%;
+}
+
+.manual-letter-group select,
+.manual-letter-group button {
+    flex: 1;
+}
