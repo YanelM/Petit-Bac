@@ -160,7 +160,6 @@ button, select, input[type=number] {
 .progress-fill {
     height: 100%;
     width: 100%;
-    background: linear-gradient(125deg,#000000,#1cc88a);
     transition: width 1s linear;
 }
 
@@ -287,5 +286,6 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
 
