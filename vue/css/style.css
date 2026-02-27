@@ -90,9 +90,10 @@ h1 {
     text-align: center;
 }
 .categorie_manche {
-    font-size: 1.1rem;
     color: #1cc88a;
-    font-weight: 700;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 6px;
 }
 /* ============================= */
 /* GAME AREA */
@@ -237,6 +238,9 @@ th, td {
         margin-top: 10px;
         font-size: 1rem;
     }
+    .categorie_manche::before {
+        color: black !important;
+    }
 }
 
 /* Animation pour bouton Valider */
@@ -283,4 +287,5 @@ th, td {
 .manual-letter-group button {
     flex: 1;
 }
+
 
