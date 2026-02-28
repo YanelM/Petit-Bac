@@ -328,7 +328,7 @@ window.restartGame = function(){
 };
 
 // =============================
-// FIXER LE TIMER AU SCROLL AVEC PLACEHOLDER
+// TIMER COLLANT EN HAUT (position absolute)
 // =============================
 window.addEventListener("scroll", () => {
     const openRound = document.querySelector(".round.open");
@@ -337,26 +337,25 @@ window.addEventListener("scroll", () => {
     const timer = openRound.querySelector(".timer-container");
     if (!timer) return;
 
-    // Crée un placeholder si inexistant
-    if (!timer.nextElementSibling || !timer.nextElementSibling.classList.contains("timer-placeholder")) {
-        const placeholder = document.createElement("div");
-        placeholder.className = "timer-placeholder";
-        placeholder.style.height = timer.offsetHeight + "px";
-        placeholder.style.display = "none";
-        timer.parentNode.insertBefore(placeholder, timer.nextSibling);
-    }
-    const placeholder = timer.nextElementSibling;
+    const roundRect = openRound.getBoundingClientRect();
+    const timerHeight = timer.offsetHeight;
 
-    const rect = timer.getBoundingClientRect();
-    if(rect.top < 0) {
-        timer.classList.add("fixed-timer");
-        placeholder.style.display = "block";
+    // Si le haut du round est au-dessus de 0 et le bas du round n'est pas encore dépassé
+    if(roundRect.top < 10 && roundRect.bottom > timerHeight + 10) {
+        // Collé en haut du parent round
+        timer.style.position = "absolute";
+        timer.style.top = (window.scrollY - openRound.offsetTop) + "px";
+        timer.style.left = "0";
+        timer.style.width = "100%";
+        timer.style.zIndex = "10";
     } else {
-        timer.classList.remove("fixed-timer");
-        placeholder.style.display = "none";
+        // Retour à sa position normale
+        timer.style.position = "";
+        timer.style.top = "";
+        timer.style.left = "";
+        timer.style.width = "";
+        timer.style.zIndex = "";
     }
 });
 
 });
-
-
