@@ -19,7 +19,7 @@ h1 {
 }
 
 .validateBtn {
-    background-color: #CDEDF6;
+    background-color: #5EB1BF;
     color: white;
 }
 .bouton_finishGame {
@@ -91,7 +91,7 @@ h1 {
     text-align: center;
 }
 .categorie_manche {
-    color: #CDEDF6;
+    color: #5EB1BF;
     font-weight: bold;
     padding: 4px;
     border-radius: 6px;
@@ -131,7 +131,7 @@ button, select, input[type=number] {
 }
 
 .round-header {
-    background: #CDEDF6;
+    background: #5EB1BF;
     color: white;
     padding: 12px;
     display: flex;
@@ -333,6 +333,7 @@ th, td {
 .timer-placeholder {
     width: 100%;
 }
+
 
 
 
