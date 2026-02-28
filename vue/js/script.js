@@ -186,6 +186,13 @@ window.startRound = function(letter){
     `;
 
     document.getElementById("rounds").appendChild(roundDiv);
+    // Scroll vers le haut de la nouvelle manche
+    setTimeout(() => {
+        roundDiv.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 100);
 
     roundDiv.querySelector(".round-header").onclick = () => {
         if(roundDiv.classList.contains("open")){
@@ -250,6 +257,14 @@ window.startRound = function(letter){
         });
 
         validateBtn.disabled = true;
+
+        // Remonter en haut de la manche après validation
+        setTimeout(() => {
+            roundDiv.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }, 100);
     };
 };
 
@@ -298,3 +313,4 @@ window.restartGame = function(){
 };
 
 });
+
