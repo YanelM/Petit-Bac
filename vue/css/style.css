@@ -302,63 +302,26 @@ th, td {
 /* SELECTION MODE LETTRE MODERNE */
 /* ============================= */
 
-.letter-mode {
-    background: white;
-    padding: 15px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-/* Cache les vrais radios */
-.letter-mode input[type="radio"] {
-    display: none;
-}
-
-.mode-selector {
+/* Boutons mode côte à côte */
+.letter-choice {
     display: flex;
     gap: 10px;
+    width: 100%;
 }
 
 .mode-btn {
     flex: 1;
-    padding: 12px;
-    text-align: center;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
     background: #f0f0f0;
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
+    cursor: pointer;
 }
 
-/* Hover */
-.mode-btn:hover {
-    transform: translateY(-2px);
-}
-
-/* Quand sélectionné */
-#modeRandom:checked + .mode-btn,
-#modeManual:checked + .mode-btn {
+.mode-btn.active {
     background: #1cc88a;
     color: white;
-    border-color: #17a673;
-    box-shadow: 0 4px 12px rgba(28,200,138,0.3);
+    font-weight: bold;
 }
 
-/* Select */
-.manual-select-container select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    transition: 0.2s;
-}
-
-.manual-select-container select:focus {
-    border-color: #1cc88a;
-    outline: none;
+/* Cacher le select */
+.hidden {
+    display: none;
 }
