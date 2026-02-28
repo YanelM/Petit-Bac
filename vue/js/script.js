@@ -232,22 +232,39 @@ window.startRound = function(letter){
 // =============================
 // AUTRES FONCTIONS
 // =============================
-window.startRoundRandom = function(){
-    const remaining = alphabet.filter(l=>!usedLetters.includes(l));
 
-    if(remaining.length === 0){
-        alert("Toutes les lettres ont été utilisées !");
-        return;
+// =============================
+// LANCER MANCHE (nouveau système)
+// =============================
+window.launchRound = function(){
+
+    const mode = document.querySelector('input[name="letterMode"]:checked').value;
+
+    if(mode === "random"){
+
+        const remaining = alphabet.filter(l => !usedLetters.includes(l));
+
+        if(remaining.length === 0){
+            alert("Toutes les lettres ont été utilisées !");
+            return;
+        }
+
+        const randomLetter =
+            remaining[Math.floor(Math.random() * remaining.length)];
+
+        startRound(randomLetter);
+
+    } else {
+
+        const letter = document.getElementById("letterSelect").value;
+
+        if(!letter || usedLetters.includes(letter)){
+            alert("Lettre invalide ou déjà utilisée.");
+            return;
+        }
+
+        startRound(letter);
     }
-
-    const randomLetter =
-        remaining[Math.floor(Math.random()*remaining.length)];
-
-    startRound(randomLetter);
-};
-
-window.startRoundManual = function(){
-    startRound(document.getElementById("letterSelect").value);
 };
 
 window.finishGame = function(){
@@ -291,6 +308,7 @@ window.restartGame = function(){
 
 
 });
+
 
 
 
