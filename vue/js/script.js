@@ -328,7 +328,7 @@ window.restartGame = function(){
 };
 
 // =============================
-// TIMER COLLANT EN HAUT (position absolute)
+// TIMER ABSOLU EN HAUT AVEC Z-INDEX
 // =============================
 window.addEventListener("scroll", () => {
     const openRound = document.querySelector(".round.open");
@@ -340,14 +340,14 @@ window.addEventListener("scroll", () => {
     const roundRect = openRound.getBoundingClientRect();
     const timerHeight = timer.offsetHeight;
 
-    // Si le haut du round est au-dessus de 0 et le bas du round n'est pas encore dépassé
-    if(roundRect.top < 10 && roundRect.bottom > timerHeight + 10) {
-        // Collé en haut du parent round
+    // Si le haut du round est au-dessus de 0 mais le bas du round n'est pas dépassé
+    if (roundRect.top < 0 && roundRect.bottom > timerHeight) {
+        // Collé en haut de l'écran
         timer.style.position = "absolute";
-        timer.style.top = (window.scrollY - openRound.offsetTop) + "px";
+        timer.style.top = (window.scrollY) + "px";
         timer.style.left = "0";
         timer.style.width = "100%";
-        timer.style.zIndex = "10";
+        timer.style.zIndex = "9999"; // Très élevé pour être sûr d'être au-dessus
     } else {
         // Retour à sa position normale
         timer.style.position = "";
@@ -359,3 +359,4 @@ window.addEventListener("scroll", () => {
 });
 
 });
+
