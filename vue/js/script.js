@@ -208,20 +208,9 @@ window.startRound = function(letter){
 
     function handleScroll() {
         if(window.scrollY > initialOffset){
-            timer.style.position = "fixed";
-            timer.style.top = "0";
-            timer.style.left = "0";
-            timer.style.width = "100%";
-            timer.style.zIndex = "9999";
-            timer.style.background = "#fff";
-            placeholder.style.display = "block";
+            timerContainer.classList.add("fixed-timer");
         } else {
-            timer.style.position = "";
-            timer.style.top = "";
-            timer.style.left = "";
-            timer.style.width = "";
-            timer.style.zIndex = "";
-            placeholder.style.display = "none";
+            timerContainer.classList.remove("fixed-timer");
         }
     }
 
@@ -347,4 +336,5 @@ window.restartGame = function(){
 };
 
 });
+
 
