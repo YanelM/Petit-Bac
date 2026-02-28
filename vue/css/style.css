@@ -311,7 +311,7 @@ th, td {
 
 .mode-btn {
     flex: 1;
-    background: #1cc88a;
+    background: #f0f0f0;
     cursor: pointer;
 }
 
@@ -320,9 +320,13 @@ th, td {
     color: white;
     font-weight: bold;
 }
-
+.bouton_lancer {
+    background: #1cc88a;
+    color: white;
+}
 /* Cacher le select */
 .hidden {
     display: none;
 }
+
 
