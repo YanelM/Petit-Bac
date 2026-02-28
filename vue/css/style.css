@@ -9,7 +9,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(125deg,#000000,#5EB1BF);
+    background: linear-gradient(100deg,#000000,#5EB1BF);
     color: white;
     padding: 10px;
 }
@@ -333,5 +333,6 @@ th, td {
 .timer-placeholder {
     width: 100%;
 }
+
 
 
