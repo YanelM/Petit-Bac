@@ -207,6 +207,28 @@ window.startRound = function(letter){
 
     const timerDisplay = roundDiv.querySelector(".time");
     const progressFill = roundDiv.querySelector(".progress-fill");
+
+    // =============================
+    // TIMER FIXE AU SCROLL (mobile)
+    // =============================
+    
+    function handleScroll() {
+    
+        if(window.innerWidth > 768) return;
+    
+        const rect = timerContainer.getBoundingClientRect();
+    
+        if(rect.top <= 0) {
+            timerContainer.classList.add("fixed-timer");
+        } else {
+            timerContainer.classList.remove("fixed-timer");
+        }
+    }
+    
+    const timerContainer = roundDiv.querySelector(".timer-container");
+    
+    window.addEventListener("scroll", handleScroll);
+    
     const validateBtn = roundDiv.querySelector(".validateBtn");
     const inputs = roundDiv.querySelectorAll("input[type=text]");
 
@@ -327,25 +349,5 @@ window.restartGame = function(){
     }, 100);
 };
 
-// =============================
-// TIMER FIXE EN HAUT
-// =============================
-const observer = new MutationObserver(() => {
-    const openRound = document.querySelector(".round.open");
-    if (!openRound) return;
-
-    const timer = openRound.querySelector(".timer-container");
-    if (!timer) return;
-
-    // Fixe le timer en haut de l'écran
-    timer.style.position = "fixed";
-    timer.style.top = "0";
-    timer.style.left = "0";
-    timer.style.width = "100%";
-    timer.style.zIndex = "9999";
 });
 
-// Observe le conteneur des rounds pour fixer le timer dès qu'une manche est ajoutée
-observer.observe(document.getElementById("rounds"), { childList: true, subtree: true });
-
-});
