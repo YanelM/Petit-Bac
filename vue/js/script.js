@@ -232,6 +232,27 @@ window.startRound = function(letter){
 
     const timerDisplay = roundDiv.querySelector(".time");
     const progressFill = roundDiv.querySelector(".progress-fill");
+
+    const timerContainer = roundDiv.querySelector(".timer-container");
+    const originalOffsetTop = timerContainer.offsetTop;
+    
+    // Fonction pour gérer le scroll
+    function handleScroll() {
+        if(window.innerWidth > 768){
+            timerContainer.classList.remove("fixed-timer");
+            return;
+        }
+    
+        if(window.scrollY >= originalOffsetTop){
+            timerContainer.classList.add("fixed-timer");
+        } else {
+            timerContainer.classList.remove("fixed-timer");
+        }
+    }
+    
+    // Écoute du scroll
+    window.addEventListener("scroll", handleScroll);
+    
     const validateBtn = roundDiv.querySelector(".validateBtn");
     const inputs = roundDiv.querySelectorAll("input[type=text]");
 
@@ -336,5 +357,6 @@ window.restartGame = function(){
 };
 
 });
+
 
 
