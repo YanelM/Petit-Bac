@@ -25,25 +25,17 @@
                 <div id="rounds"></div>
                 <div id="controls">
                 
-                    <div class="letter-mode">
-
-                        <div class="mode-selector">
-                            <input type="radio" id="modeRandom" name="letterMode" value="random" checked>
-                            <label for="modeRandom" class="mode-btn">
-                                🎲 Aléatoire
-                            </label>
-                    
-                            <input type="radio" id="modeManual" name="letterMode" value="manual">
-                            <label for="modeManual" class="mode-btn">
-                                🔤 Choisir
-                            </label>
-                        </div>
-                    
-                        <div class="manual-select-container">
-                            <select id="letterSelect"></select>
-                        </div>
-                    
+                    <div class="letter-choice">
+                        <button id="btnRandom" class="mode-btn active">
+                            Lettre aléatoire
+                        </button>
+                
+                        <button id="btnManual" class="mode-btn">
+                            Choisir une lettre
+                        </button>
                     </div>
+                
+                    <select id="letterSelect" class="hidden"></select>
                 
                     <button onclick="launchRound()" class="bouton_lancer">
                         Lancer la manche
@@ -66,6 +58,7 @@
 
     </body>
 </html>
+
 
 
 
