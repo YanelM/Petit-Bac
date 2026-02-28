@@ -212,6 +212,8 @@ window.startRound = function(letter){
 
         let percent = (currentTime / time) * 100;
         progressFill.style.width = percent + "%";
+
+        let hue = percent * 1.2;
         progressFill.style.background = `hsl(${hue},85%,50%)`;
 
         if(currentTime <= 0){
@@ -296,4 +298,5 @@ window.restartGame = function(){
 };
 
 });
+
 
