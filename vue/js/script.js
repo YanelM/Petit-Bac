@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 const allCategories = ["Prénom","Pays","Ville","Animal","Objet","Métier","Marque","Fruit / Légume","Sport",
-    "Couleur","Film / Série","Chanteur","Instrument","Voiture","Capitale","Monument","Émission TV","Végétale","Titre de chanson", "Partie du corps", "Vêtement", "Moyen de transport"
-    , "Boisson", "Plat", "Mot anglais", "Mot espagnol", "Sportif", "Chose qui se trouve dans un sac à main", "Chose qui sent mauvais"];
+"Couleur","Film / Série","Chanteur","Instrument","Voiture","Capitale","Monument","Émission TV","Végétale","Titre de chanson",
+"Partie du corps","Vêtement","Moyen de transport","Boisson","Plat","Mot anglais","Mot espagnol","Sportif",
+"Chose qui se trouve dans un sac à main","Chose qui sent mauvais"];
+
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 let totalScore = 0;
 let usedLetters = [];
 let roundData = [];
 let timerInterval = null;
+let selectedMode = "random";
 
 // =============================
 // RENDER CATEGORIES
@@ -37,6 +40,27 @@ function updateLetterDropdown(){
 updateLetterDropdown();
 
 // =============================
+// MODE BUTTONS
+// =============================
+const btnRandom = document.getElementById("btnRandom");
+const btnManual = document.getElementById("btnManual");
+const letterSelect = document.getElementById("letterSelect");
+
+btnRandom.onclick = function(){
+    selectedMode = "random";
+    btnRandom.classList.add("active");
+    btnManual.classList.remove("active");
+    letterSelect.classList.add("hidden");
+};
+
+btnManual.onclick = function(){
+    selectedMode = "manual";
+    btnManual.classList.add("active");
+    btnRandom.classList.remove("active");
+    letterSelect.classList.remove("hidden");
+};
+
+// =============================
 function updateUsedLettersDisplay(){
     document.getElementById("usedLettersDisplay").textContent =
         "Lettres utilisées : " + usedLetters.join(" - ");
@@ -51,6 +75,38 @@ function closeAllRounds(){
         t.classList.remove("fixed-timer");
     });
 }
+
+// =============================
+// LANCER MANCHE
+// =============================
+window.launchRound = function(){
+
+    if(selectedMode === "random"){
+
+        const remaining = alphabet.filter(l => !usedLetters.includes(l));
+
+        if(remaining.length === 0){
+            alert("Toutes les lettres ont été utilisées !");
+            return;
+        }
+
+        const randomLetter =
+            remaining[Math.floor(Math.random() * remaining.length)];
+
+        startRound(randomLetter);
+
+    } else {
+
+        const letter = letterSelect.value;
+
+        if(!letter || usedLetters.includes(letter)){
+            alert("Lettre invalide ou déjà utilisée.");
+            return;
+        }
+
+        startRound(letter);
+    }
+};
 
 // =============================
 // START ROUND
@@ -131,11 +187,7 @@ window.startRound = function(letter){
 
     document.getElementById("rounds").appendChild(roundDiv);
 
-    // =============================
-    // MENU DEROULANT PROPRE
-    // =============================
     roundDiv.querySelector(".round-header").onclick = () => {
-
         if(roundDiv.classList.contains("open")){
             roundDiv.classList.remove("open");
         } else {
@@ -152,29 +204,6 @@ window.startRound = function(letter){
     const validateBtn = roundDiv.querySelector(".validateBtn");
     const inputs = roundDiv.querySelectorAll("input[type=text]");
 
-    // =============================
-    // TIMER FIXE AU SCROLL (mobile)
-    // =============================
-    const originalOffsetTop = timerContainer.offsetTop;
-
-    function handleScroll(){
-        if(window.innerWidth > 768){
-            timerContainer.classList.remove("fixed-timer");
-            return;
-        }
-
-        if(window.scrollY >= originalOffsetTop){
-            timerContainer.classList.add("fixed-timer");
-        } else {
-            timerContainer.classList.remove("fixed-timer");
-        }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    // =============================
-    // TIMER
-    // =============================
     clearInterval(timerInterval);
 
     timerInterval = setInterval(()=>{
@@ -183,9 +212,7 @@ window.startRound = function(letter){
 
         let percent = (currentTime / time) * 100;
         progressFill.style.width = percent + "%";
-
-        let hue = percent * 1.2;
-        progressFill.style.background = `hsl(${hue},85%,50%)`;
+        progressFill.style.background = "#1cc88a";
 
         if(currentTime <= 0){
             clearInterval(timerInterval);
@@ -196,9 +223,6 @@ window.startRound = function(letter){
         }
     },1000);
 
-    // =============================
-    // VALIDATE BUTTON
-    // =============================
     validateBtn.onclick = function(){
 
         let roundScore = 0;
@@ -215,9 +239,7 @@ window.startRound = function(letter){
         document.getElementById("totalScore").textContent =
             "Score total : " + totalScore;
 
-        // Animation bouton
         validateBtn.classList.add("animated");
-
         roundDiv.classList.add("validated");
 
         roundData.push({
@@ -230,43 +252,8 @@ window.startRound = function(letter){
 };
 
 // =============================
-// AUTRES FONCTIONS
+// FIN DE PARTIE
 // =============================
-
-// =============================
-// LANCER MANCHE (nouveau système)
-// =============================
-window.launchRound = function(){
-
-    const mode = document.querySelector('input[name="letterMode"]:checked').value;
-
-    if(mode === "random"){
-
-        const remaining = alphabet.filter(l => !usedLetters.includes(l));
-
-        if(remaining.length === 0){
-            alert("Toutes les lettres ont été utilisées !");
-            return;
-        }
-
-        const randomLetter =
-            remaining[Math.floor(Math.random() * remaining.length)];
-
-        startRound(randomLetter);
-
-    } else {
-
-        const letter = document.getElementById("letterSelect").value;
-
-        if(!letter || usedLetters.includes(letter)){
-            alert("Lettre invalide ou déjà utilisée.");
-            return;
-        }
-
-        startRound(letter);
-    }
-};
-
 window.finishGame = function(){
 
     if(roundData.length === 0) return;
@@ -285,7 +272,11 @@ window.finishGame = function(){
     `;
 };
 
+// =============================
+// RESTART
+// =============================
 window.restartGame = function(){
+
     clearInterval(timerInterval);
 
     totalScore = 0;
@@ -302,13 +293,6 @@ window.restartGame = function(){
     document.querySelectorAll("#categorySelection input")
         .forEach(cb=>cb.checked=false);
 
-    document.querySelectorAll(".timer-container")
-        .forEach(t=>t.classList.remove("fixed-timer"));
 };
 
-
 });
-
-
-
-
