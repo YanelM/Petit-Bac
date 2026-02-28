@@ -316,7 +316,7 @@ th, td {
 }
 
 .mode-btn.active {
-    background: #F7674A;
+    background: #FFC229;
     color: white;
     font-weight: bold;
 }
@@ -328,5 +328,6 @@ th, td {
 .hidden {
     display: none;
 }
+
 
 
