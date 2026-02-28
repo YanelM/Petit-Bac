@@ -328,44 +328,24 @@ window.restartGame = function(){
 };
 
 // =============================
-// TIMER COLLANT FIXE EN HAUT AVEC PLACEHOLDER
+// TIMER FIXE EN HAUT
 // =============================
-window.addEventListener("scroll", () => {
+const observer = new MutationObserver(() => {
     const openRound = document.querySelector(".round.open");
     if (!openRound) return;
 
     const timer = openRound.querySelector(".timer-container");
     if (!timer) return;
 
-    // Crée un placeholder si inexistant
-    if (!timer.nextElementSibling || !timer.nextElementSibling.classList.contains("timer-placeholder")) {
-        const placeholder = document.createElement("div");
-        placeholder.className = "timer-placeholder";
-        placeholder.style.height = timer.offsetHeight + "px";
-        placeholder.style.display = "none";
-        timer.parentNode.insertBefore(placeholder, timer.nextSibling);
-    }
-    const placeholder = timer.nextElementSibling;
-
-    const rect = timer.getBoundingClientRect();
-
-    if(rect.top < 0) {
-        timer.style.position = "fixed";
-        timer.style.top = "0";
-        timer.style.left = "0";
-        timer.style.width = "100%";
-        timer.style.zIndex = "9999";
-        placeholder.style.display = "block"; // Réserve l’espace
-    } else {
-        timer.style.position = "";
-        timer.style.top = "";
-        timer.style.left = "";
-        timer.style.width = "";
-        timer.style.zIndex = "";
-        placeholder.style.display = "none";
-    }
+    // Fixe le timer en haut de l'écran
+    timer.style.position = "fixed";
+    timer.style.top = "0";
+    timer.style.left = "0";
+    timer.style.width = "100%";
+    timer.style.zIndex = "9999";
 });
 
+// Observe le conteneur des rounds pour fixer le timer dès qu'une manche est ajoutée
+observer.observe(document.getElementById("rounds"), { childList: true, subtree: true });
+
 });
-
-
