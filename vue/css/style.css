@@ -253,7 +253,7 @@ th, td {
         flex: 0 0 100%;
     }
     .categorie_manche {
-        font-size: 1em;
+        font-size: 2rem;
     }
 }
 
@@ -336,6 +336,7 @@ th, td {
 .timer-placeholder {
     width: 100%;
 }
+
 
 
 
