@@ -24,15 +24,33 @@
             <div class="game-container">
                 <div id="rounds"></div>
                 <div id="controls">
-                    <button onclick="startRoundRandom()">Lettre aléatoire</button>
-
-                    <div class="manual-letter-group">
+                
+                    <div class="letter-mode">
+                        <label>
+                            <input type="radio" name="letterMode" value="random" checked>
+                            Lettre aléatoire
+                        </label>
+                
+                        <label>
+                            <input type="radio" name="letterMode" value="manual">
+                            Choisir une lettre
+                        </label>
+                
                         <select id="letterSelect"></select>
-                        <button onclick="startRoundManual()">Choisir la lettre</button>
                     </div>
-
-                    <button onclick="finishGame()" class="bouton_finishGame">Finir la partie</button>
-                    <button onclick="restartGame()" class="bouton_restartGame">Recommencer la partie</button>
+                
+                    <button onclick="launchRound()" class="bouton_lancer">
+                        Lancer la manche
+                    </button>
+                
+                    <button onclick="finishGame()" class="bouton_finishGame">
+                        Finir la partie
+                    </button>
+                
+                    <button onclick="restartGame()" class="bouton_restartGame">
+                        Recommencer la partie
+                    </button>
+                
                 </div>
                 <div id="statistics"></div>
             </div>
@@ -42,6 +60,7 @@
 
     </body>
 </html>
+
 
 
 
