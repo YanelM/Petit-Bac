@@ -213,6 +213,7 @@ window.startRound = function(letter){
             timer.style.left = "0";
             timer.style.width = "100%";
             timer.style.zIndex = "9999";
+            timer.style.background = "#fff";
             placeholder.style.display = "block";
         } else {
             timer.style.position = "";
@@ -346,3 +347,4 @@ window.restartGame = function(){
 };
 
 });
+
