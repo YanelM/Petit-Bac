@@ -247,6 +247,10 @@ th, td {
     .categorie_manche::before {
         color: black !important;
     }
+    .letter-mode {
+        width: 100%;
+        flex: 0 0 100%;
+    }
 }
 
 /* Animation pour bouton Valider */
@@ -301,9 +305,8 @@ th, td {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
+
     width: 100%;
-    flex: 1 1 100%;
 }
 
 .letter-mode select {
@@ -315,4 +318,5 @@ th, td {
     color: white;
     font-weight: bold;
 }
+
 
