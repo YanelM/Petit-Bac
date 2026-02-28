@@ -71,9 +71,6 @@ function closeAllRounds(){
     document.querySelectorAll(".round").forEach(r=>{
         r.classList.remove("open");
     });
-    document.querySelectorAll(".timer-container").forEach(t=>{
-        t.classList.remove("fixed-timer");
-    });
 }
 
 // =============================
@@ -207,32 +204,6 @@ window.startRound = function(letter){
 
     const timerDisplay = roundDiv.querySelector(".time");
     const progressFill = roundDiv.querySelector(".progress-fill");
-
-    // =============================
-    // TIMER FIXE AU SCROLL (mobile) CORRIGÉ
-    // =============================
-    function handleScroll() {
-        if(window.innerWidth > 768) return; // mobile seulement
-    
-        const scrollY = window.scrollY || window.pageYOffset;
-        
-        // Position initiale du timer
-        const timerTop = timerContainer.offsetTop;
-    
-        if(scrollY >= timerTop) {
-            timerContainer.classList.add("fixed-timer");
-        } else {
-            timerContainer.classList.remove("fixed-timer");
-        }
-    }
-    
-    // On récupère le timer dès que la manche est lancée
-    const timerContainer = roundDiv.querySelector(".timer-container");
-    
-    // Enregistre la position initiale du timer
-    const timerInitialTop = timerContainer.offsetTop;
-    
-    window.addEventListener("scroll", handleScroll);
     
     const validateBtn = roundDiv.querySelector(".validateBtn");
     const inputs = roundDiv.querySelectorAll("input[type=text]");
@@ -355,5 +326,6 @@ window.restartGame = function(){
 };
 
 });
+
 
 
