@@ -329,5 +329,6 @@ th, td {
     display: none;
 }
 
-
-
+.timer-placeholder {
+    width: 100%;
+}
