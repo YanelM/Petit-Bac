@@ -328,17 +328,23 @@ window.restartGame = function(){
 };
 
 // =============================
-// FIXER LE TIMER AU SCROLL
+// FIXER LE TIMER AU SCROLL (corrigé)
 // =============================
 window.addEventListener("scroll", () => {
-    document.querySelectorAll(".timer-container").forEach(timer => {
-        const rect = timer.getBoundingClientRect();
-        if(rect.top < 0) {
-            timer.classList.add("fixed-timer");
-        } else if(rect.top >= 0) {
-            timer.classList.remove("fixed-timer");
-        }
-    });
+    const openRound = document.querySelector(".round.open");
+    if (!openRound) return;
+
+    const timer = openRound.querySelector(".timer-container");
+    if (!timer) return;
+
+    const rect = timer.getBoundingClientRect();
+    // Si le haut du timer est sorti de l'écran → fixer
+    if(rect.top < 0) {
+        timer.classList.add("fixed-timer");
+    } else {
+        timer.classList.remove("fixed-timer");
+    }
 });
 
 });
+
