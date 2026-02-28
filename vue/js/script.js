@@ -71,6 +71,9 @@ function closeAllRounds(){
     document.querySelectorAll(".round").forEach(r=>{
         r.classList.remove("open");
     });
+    document.querySelectorAll(".timer-container").forEach(t=>{
+        t.classList.remove("fixed-timer");
+    });
 }
 
 // =============================
@@ -183,6 +186,7 @@ window.startRound = function(letter){
     `;
 
     document.getElementById("rounds").appendChild(roundDiv);
+
     // Scroll vers le haut de la nouvelle manche
     setTimeout(() => {
         roundDiv.scrollIntoView({
@@ -191,6 +195,40 @@ window.startRound = function(letter){
         });
     }, 100);
 
+    // =============================
+    // TIMER STICKY AU SCROLL
+    // =============================
+    const timer = roundDiv.querySelector(".timer-container");
+    const placeholder = document.createElement("div");
+    placeholder.style.height = timer.offsetHeight + "px";
+    placeholder.style.display = "none";
+    timer.parentNode.insertBefore(placeholder, timer);
+
+    const initialOffset = timer.offsetTop;
+
+    function handleScroll() {
+        if(window.scrollY > initialOffset){
+            timer.style.position = "fixed";
+            timer.style.top = "0";
+            timer.style.left = "0";
+            timer.style.width = "100%";
+            timer.style.zIndex = "9999";
+            placeholder.style.display = "block";
+        } else {
+            timer.style.position = "";
+            timer.style.top = "";
+            timer.style.left = "";
+            timer.style.width = "";
+            timer.style.zIndex = "";
+            placeholder.style.display = "none";
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    // ----------------------------
+    // Toggle ouverture manche
+    // ----------------------------
     roundDiv.querySelector(".round-header").onclick = () => {
         if(roundDiv.classList.contains("open")){
             roundDiv.classList.remove("open");
@@ -204,7 +242,6 @@ window.startRound = function(letter){
 
     const timerDisplay = roundDiv.querySelector(".time");
     const progressFill = roundDiv.querySelector(".progress-fill");
-    
     const validateBtn = roundDiv.querySelector(".validateBtn");
     const inputs = roundDiv.querySelectorAll("input[type=text]");
 
@@ -217,7 +254,6 @@ window.startRound = function(letter){
         let percent = (currentTime / time) * 100;
         progressFill.style.width = percent + "%";
 
-        // Couleur dynamique vert ➜ rouge
         let hue = percent * 1.2;
         progressFill.style.background = `hsl(${hue}, 85%, 50%)`;
 
@@ -256,7 +292,6 @@ window.startRound = function(letter){
 
         validateBtn.disabled = true;
 
-        // Remonter en haut de la manche après validation
         setTimeout(() => {
             roundDiv.scrollIntoView({
                 behavior: "smooth",
@@ -285,14 +320,6 @@ window.finishGame = function(){
             <p>Meilleure manche : ${best}</p>
         </div>
     `;
-
-    // Scroll vers le bas de la page après affichage des stats
-    setTimeout(() => {
-        document.getElementById("statistics").scrollIntoView({
-            behavior: "smooth",
-            block: "end"
-        });
-    }, 100);
 };
 
 // =============================
@@ -316,16 +343,6 @@ window.restartGame = function(){
     document.querySelectorAll("#categorySelection input")
         .forEach(cb=>cb.checked=false);
 
-    // Scroll vers le haut de la page après restart
-    setTimeout(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }, 100);
 };
 
 });
-
-
-
