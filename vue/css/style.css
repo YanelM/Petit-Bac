@@ -311,12 +311,12 @@ th, td {
 
 .mode-btn {
     flex: 1;
-    background: #f0f0f0;
+    background: #1cc88a;
     cursor: pointer;
 }
 
 .mode-btn.active {
-    background: #1cc88a;
+    background: #F7674A;
     color: white;
     font-weight: bold;
 }
@@ -325,3 +325,4 @@ th, td {
 .hidden {
     display: none;
 }
+
