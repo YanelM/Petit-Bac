@@ -328,7 +328,7 @@ window.restartGame = function(){
 };
 
 // =============================
-// TIMER ABSOLU EN HAUT AVEC Z-INDEX
+// TIMER COLLANT FIXE EN HAUT AVEC PLACEHOLDER
 // =============================
 window.addEventListener("scroll", () => {
     const openRound = document.querySelector(".round.open");
@@ -337,26 +337,35 @@ window.addEventListener("scroll", () => {
     const timer = openRound.querySelector(".timer-container");
     if (!timer) return;
 
-    const roundRect = openRound.getBoundingClientRect();
-    const timerHeight = timer.offsetHeight;
+    // Crée un placeholder si inexistant
+    if (!timer.nextElementSibling || !timer.nextElementSibling.classList.contains("timer-placeholder")) {
+        const placeholder = document.createElement("div");
+        placeholder.className = "timer-placeholder";
+        placeholder.style.height = timer.offsetHeight + "px";
+        placeholder.style.display = "none";
+        timer.parentNode.insertBefore(placeholder, timer.nextSibling);
+    }
+    const placeholder = timer.nextElementSibling;
 
-    // Si le haut du round est au-dessus de 0 mais le bas du round n'est pas dépassé
-    if (roundRect.top < 0 && roundRect.bottom > timerHeight) {
-        // Collé en haut de l'écran
-        timer.style.position = "absolute";
-        timer.style.top = (window.scrollY) + "px";
+    const rect = timer.getBoundingClientRect();
+
+    if(rect.top < 0) {
+        timer.style.position = "fixed";
+        timer.style.top = "0";
         timer.style.left = "0";
         timer.style.width = "100%";
-        timer.style.zIndex = "9999"; // Très élevé pour être sûr d'être au-dessus
+        timer.style.zIndex = "9999";
+        placeholder.style.display = "block"; // Réserve l’espace
     } else {
-        // Retour à sa position normale
         timer.style.position = "";
         timer.style.top = "";
         timer.style.left = "";
         timer.style.width = "";
         timer.style.zIndex = "";
+        placeholder.style.display = "none";
     }
 });
 
 });
+
 
