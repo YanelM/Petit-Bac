@@ -327,4 +327,18 @@ window.restartGame = function(){
     }, 100);
 };
 
+// =============================
+// FIXER LE TIMER AU SCROLL
+// =============================
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".timer-container").forEach(timer => {
+        const rect = timer.getBoundingClientRect();
+        if(rect.top < 0) {
+            timer.classList.add("fixed-timer");
+        } else if(rect.top >= 0) {
+            timer.classList.remove("fixed-timer");
+        }
+    });
+});
+
 });
