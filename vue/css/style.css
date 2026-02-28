@@ -252,6 +252,9 @@ th, td {
         width: 100%;
         flex: 0 0 100%;
     }
+    .categorie_manche {
+        font-size: 1em;
+    }
 }
 
 /* Animation pour bouton Valider */
@@ -333,6 +336,7 @@ th, td {
 .timer-placeholder {
     width: 100%;
 }
+
 
 
 
