@@ -26,17 +26,23 @@
                 <div id="controls">
                 
                     <div class="letter-mode">
-                        <label>
-                            <input type="radio" name="letterMode" value="random" checked>
-                            Lettre aléatoire
-                        </label>
-                
-                        <label>
-                            <input type="radio" name="letterMode" value="manual">
-                            Choisir une lettre
-                        </label>
-                
-                        <select id="letterSelect"></select>
+
+                        <div class="mode-selector">
+                            <input type="radio" id="modeRandom" name="letterMode" value="random" checked>
+                            <label for="modeRandom" class="mode-btn">
+                                🎲 Aléatoire
+                            </label>
+                    
+                            <input type="radio" id="modeManual" name="letterMode" value="manual">
+                            <label for="modeManual" class="mode-btn">
+                                🔤 Choisir
+                            </label>
+                        </div>
+                    
+                        <div class="manual-select-container">
+                            <select id="letterSelect"></select>
+                        </div>
+                    
                     </div>
                 
                     <button onclick="launchRound()" class="bouton_lancer">
@@ -60,6 +66,7 @@
 
     </body>
 </html>
+
 
 
 
