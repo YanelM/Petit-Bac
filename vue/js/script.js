@@ -287,6 +287,14 @@ window.finishGame = function(){
             <p>Meilleure manche : ${best}</p>
         </div>
     `;
+
+    // Scroll vers le bas de la page après affichage des stats
+    setTimeout(() => {
+        document.getElementById("statistics").scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+    }, 100);
 };
 
 // =============================
@@ -310,7 +318,13 @@ window.restartGame = function(){
     document.querySelectorAll("#categorySelection input")
         .forEach(cb=>cb.checked=false);
 
+    // Scroll vers le haut de la page après restart
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }, 100);
 };
 
 });
-
