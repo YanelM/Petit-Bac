@@ -247,13 +247,14 @@ th, td {
     }
     .categorie_manche::before {
         color: black !important;
+        font-size: 1rem;
     }
     .letter-mode {
         width: 100%;
         flex: 0 0 100%;
     }
     .categorie_manche {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -336,6 +337,7 @@ th, td {
 .timer-placeholder {
     width: 100%;
 }
+
 
 
 
